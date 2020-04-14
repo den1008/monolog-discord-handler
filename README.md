@@ -9,13 +9,19 @@ A simple monolog handler for support Discord webhooks
 - PHP ^7.2
 - Monolog ~2
 
+
+For monolog version 1:
+- PHP ^5.6
+- Monolog ~1.3
+
 -------------------------------------------------
 
 ## 1. Installing
 
 Easy install via composer. Still no idea what composer is? Inform yourself [here](http://getcomposer.org).
 
-```composer require den1008/monolog-discord-handler```
+```composer require den1008/monolog-discord-handler "~1.0" ``` - Monolog v1
+```composer require den1008/monolog-discord-handler "~2.0" ``` - Monolog v2
 
 -------------------------------------------------
 
