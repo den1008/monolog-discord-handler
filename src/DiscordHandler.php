@@ -2,12 +2,13 @@
 
 namespace DiscordHandler;
 
+use GuzzleHttp\Client;
 use \Monolog\Logger;
 use \Monolog\Handler\AbstractProcessingHandler;
 
 class DiscordHandler extends AbstractProcessingHandler
 {
-    /** @var \GuzzleHttp\Client */
+    /** @var Client */
     protected $guzzle;
 
     protected $name;
@@ -36,7 +37,7 @@ class DiscordHandler extends AbstractProcessingHandler
     {
         $this->name = $name;
         $this->subName = $subName;
-        $this->guzzle = new \GuzzleHttp\Client();
+        $this->guzzle = new Client();
         $this->webHooks = (array)$webHooks;
         $this->multiMsg = $multiMsg;
         parent::__construct($level, $bubble);
@@ -44,9 +45,8 @@ class DiscordHandler extends AbstractProcessingHandler
 
     /**
      * @param array $record
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    protected function write(array $record)
+	 */
+    protected function write(array $record): void
     {
         $content = '[**' . $record['datetime']->format('Y-m-d H:i:s') . ']** ' . $this->name . '.' . $this->subName . '.__' . $record['level_name'] . '__: ' . $record['message'];
 
@@ -68,8 +68,7 @@ class DiscordHandler extends AbstractProcessingHandler
     /**
      * @param $webHook
      * @param $content
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
+	 */
     protected function send($webHook, $content){
         $this->guzzle->request(
             'POST', $webHook, [
