@@ -21,6 +21,7 @@ For monolog version 1:
 Easy install via composer. Still no idea what composer is? Inform yourself [here](http://getcomposer.org).
 
 ```composer require den1008/monolog-discord-handler "~1.0" ``` - Monolog v1
+
 ```composer require den1008/monolog-discord-handler "~2.0" ``` - Monolog v2
 
 -------------------------------------------------
